@@ -1,10 +1,10 @@
 import React from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { useDispatch } from "react-redux";
+import { googleClientID } from "../../env_Variables/ENV_Constants";
 import { registerUserToApp } from "../../redux/action-listners/user.ActionListener";
 
-const cliendId =
-  "90784126384-rnfl08fme831sjh1r4g8nphsal6b7aji.apps.googleusercontent.com";
+const cliendId = googleClientID;
 let isLogin = false;
 
 export function Googleregistercomp(props) {
