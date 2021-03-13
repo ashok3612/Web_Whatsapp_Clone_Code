@@ -1,0 +1,9 @@
+.Dummy__Message_MainPanel {
+  display: flex;
+  flex-direction: column;
+  flex: 0.7;
+  background-color: white;
+  background-image: url("../assets/images/whatsapp_dummy.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}

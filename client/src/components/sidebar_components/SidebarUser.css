@@ -1,0 +1,55 @@
+.Sidebar__IndUser {
+  cursor: pointer;
+  margin: 2px;
+  width: 98%;
+  height: 70px;
+  background-color: white;
+  display: inline-flex;
+  text-align: left;
+}
+
+.Sidebar__IndUser:hover {
+  background-color: #eaf0e9;
+}
+
+.Sidebar__UserAvatar {
+  cursor: pointer;
+  align-items: center;
+  position: relative;
+  padding-top: 4px;
+  width: 20%;
+  height: 100%;
+}
+
+.Sidebar__UserAvatar > .MuiAvatar-root {
+  position: relative;
+  left: 18%;
+  top: 10%;
+}
+
+.Sidebar__UserDetail {
+  cursor: pointer;
+  height: 100%;
+  width: 80%;
+  position: relative;
+}
+
+.Sidebar__Username {
+    width: 50%;
+    position: relative;
+    top: 11px;
+    left: 10px;
+    font-family: cursive;
+    color: #5e5e5e;
+  }
+  
+  .Sidebar__UserLastMessage {
+    position: relative;
+    margin: 0px;
+    width: 95%;
+    top: 17px;
+    left: 12px;
+    font-size: 13px;
+    font-family: inherit;
+    color: grey;
+  }

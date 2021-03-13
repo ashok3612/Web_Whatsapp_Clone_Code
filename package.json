@@ -1,0 +1,29 @@
+{
+  "name": "whatsapp-back",
+  "version": "1.0.0",
+  "description": "This is whatsapp backend",
+  "main": "server.js",
+  "engines": {
+    "node": "14.6.0",
+    "npm": "6.14.6"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "backend": "nodemon server.js",
+    "frontend": "npm run start --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
+  },
+  "author": "Ashok Selvaraj",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.15",
+    "socket.io": "^3.1.2",
+    "concurrently": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

@@ -1,0 +1,56 @@
+.Message__Header {
+  background-color: #eef2ed;
+  justify-content: space-between;
+  margin-right: 2px;
+  display: inline-flex;
+}
+
+.Message__HeaderLeft {
+  position: relative;
+  width: 30%;
+  height: 100%;
+  display: inline-flex;
+  text-align: left;
+}
+
+.Message__HeaderRight {
+  display: flex;
+}
+
+.Message__HeaderAvatar {
+  padding: 10px;
+}
+
+.Message__HeaderUserDetail {
+  position: relative;
+  width: 70%;
+}
+
+.Message__Username {
+  width: 50%;
+  position: relative;
+  top: 11px;
+  left: 10px;
+  font-family: cursive;
+  color: #5e5e5e;
+}
+
+.Message__UserLastSeen {
+  position: relative;
+  margin: 0px;
+  width: 99%;
+  top: 17px;
+  left: 12px;
+  font-size: 13px;
+  font-family: inherit;
+  color: grey;
+}
+
+.Message_HeaderRightIcons {
+    padding: 10px;
+}
+
+.Logout__Button > div{
+  padding: 15px 10px;
+}
+

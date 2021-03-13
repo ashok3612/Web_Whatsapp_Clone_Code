@@ -1,0 +1,20 @@
+.Login__Main {
+    display: grid;
+    place-items: center;
+    background-color: #279182;
+    height: 100vh;
+    background-image: url("../assets/images/whats_back.jpg");
+  }
+  
+  .Login__LoginDiv {
+    height: 30%;
+    width: 20%;
+    min-width: 300px !important;
+    min-height: 250px !important;
+    background-color: #edf2f0;
+    box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.2), 0 10px 40px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .Button_Action{
+    padding: 10px 20px;
+  }

@@ -1,0 +1,6 @@
+.Sidebar__Main{
+    display: flex;
+    flex-direction: column;
+    flex: 0.30;
+    background-color: white;
+}

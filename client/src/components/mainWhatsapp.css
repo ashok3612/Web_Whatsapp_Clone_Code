@@ -1,0 +1,18 @@
+.Main {
+    display: grid;
+    place-items: center;
+    background-color: #279182;
+    min-width: 1200px !important;
+    height: 100vh;
+    background-image: url("../assets/images/whats_back.jpg");
+  }
+  
+  .wApp_main {
+    display: flex;
+    height: 90vh;
+    width: 90vw;
+    min-width: 1180px !important;
+    min-height: 600px !important;
+    background-color: #edf2f0;
+    box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.2), 0 10px 40px 0 rgba(0, 0, 0, 0.19);
+  }

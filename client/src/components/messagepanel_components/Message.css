@@ -1,0 +1,42 @@
+.Message__TopDiv {
+  display: flow-root;
+    width: auto;
+    position: relative;
+    height: auto;
+    padding: 4px 40px;
+}
+
+.Message__MessageRight {
+  background-color: #88ffb2;
+  position: relative;
+  width: auto !important;
+  float: right;
+  max-width: 50%;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.Message__MessageLeft {
+  background-color: white;
+  position: relative;
+  width: auto !important;
+  float: left;
+  max-width: 50%;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.Message__Time {
+  float: right;
+  padding: 10px;
+  font-size: 12px;
+  color: darkslategrey;
+  font-family: initial;
+}
+
+.Message__TextMessage{
+    font-size: 13px;
+    font-family: revert;
+    padding: 12px;
+    word-wrap: break-word !important;
+}

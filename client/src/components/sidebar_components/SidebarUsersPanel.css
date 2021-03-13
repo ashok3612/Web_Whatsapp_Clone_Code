@@ -1,0 +1,15 @@
+.Sidebar_UsersListPanel {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  width: 99%;
+  background-color: #eaf0e9;
+}
+
+.Sidebar_UsersListPanel::-webkit-scrollbar {
+  width: 5px;
+}
+
+.Sidebar_UsersListPanel::-webkit-scrollbar-thumb {
+  background-color: #bfbfbf;
+}

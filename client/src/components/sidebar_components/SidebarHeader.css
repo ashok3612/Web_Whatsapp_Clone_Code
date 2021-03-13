@@ -1,0 +1,19 @@
+.Sidebar__Header{
+    background-color: #eef2ed;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    margin-right: 2px;
+}
+
+.Sidebar__HeaderAvatar{
+    padding-left: 10px;
+    position: relative;
+    padding-top: 4px;
+    width: 20%;
+}
+
+.Sidebar__HeaderActionIcons{
+    position: relative;
+    width: 40%;
+}

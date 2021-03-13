@@ -1,0 +1,7 @@
+.Message_MainPanel{
+    display: flex;
+    flex-direction: column;
+    flex: 0.70;
+    background-color: white;
+    max-width: 70%;
+}

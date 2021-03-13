@@ -1,0 +1,34 @@
+.Message__SenderMain{
+    height: 50px;
+    background-color: aliceblue;
+    width: 99%;
+    bottom: 5%;
+    display: flex;
+    min-width: 825px;
+}
+
+.Message_SenderIcons{
+    position: relative;
+    height: 99%;
+    width: 12%;
+    justify-content: space-between;
+}
+
+.Message_SenderItem{
+    width: 80%;
+    padding: 6px;
+}
+
+.Message_SenderItem > form > input{
+    padding: 10px;
+    width: 98%;
+    border-radius: 20px;
+    border: 0px;
+    outline-style: none;
+}
+
+.Message_SenderMic{
+    width: 8%;
+    position: relative;
+    height: 99%;
+}

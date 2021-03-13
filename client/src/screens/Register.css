@@ -1,0 +1,20 @@
+.Register__Main {
+    display: grid;
+    place-items: center;
+    background-color: #279182;
+    height: 100vh;
+    background-image: url("../assets/images/whats_back.jpg");
+  }
+  
+  .Register__RegisterDiv {
+    height: 30%;
+    width: 20%;
+    min-width: 400px !important;
+    min-height: 300px !important;
+    background-color: #edf2f0;
+    box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.2), 0 10px 40px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .Register_Button_Action{
+    padding: 10px 20px;
+  }

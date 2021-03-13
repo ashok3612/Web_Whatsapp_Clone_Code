@@ -1,0 +1,28 @@
+.Sidebar_Search{
+    display: flex;
+    background-color: #fafafa;
+    height: 40px;
+    align-items: center;
+    padding: 8px;
+}
+
+.Sidebar__SearchItems{
+    align-items: center;
+    width: 99%;
+    height: 40px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.Sidebar__SearchItems > input {
+    outline-style: none;
+    border: 0;
+    width: 80%;
+    height: 100%;
+}
+
+.Sidebar__SearchItems > .MuiSvgIcon-root {
+    position: relative;
+    top: 8px;
+    left: -5px;
+}
