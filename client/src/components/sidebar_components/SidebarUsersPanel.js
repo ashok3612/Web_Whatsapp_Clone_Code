@@ -2,23 +2,45 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Sidebaruser } from "./SidebarUser";
 import "./SidebarUsersPanel.css";
+import { Fab } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import PopupAdduser from "../Popup_AddUser";
 
 export function Sidebaruserspanel(props) {
   let users = [];
   if (props.users !== undefined) users = props.users;
   let [allUsers, setAllUsers] = useState([]);
-  const toUser = useSelector(state => state.userState.toChatUser);
-  
+  const toUser = useSelector((state) => state.userState.toChatUser);
+  let [isShowPopup, setIsShowPopup] = useState(false);
+
   useEffect(() => {
     setAllUsers(users);
-  }, [toUser, users])
+  }, [toUser, users]);
+
+  const onClickFABHandler = () => {
+    setIsShowPopup(true);
+  }
+
+  const closePopHandler = () => {
+    setIsShowPopup(false);
+  }
 
   return (
     <React.Fragment>
       <div className="Sidebar_UsersListPanel">
         {allUsers.map((user) => {
-          return <Sidebaruser active={toUser.googleId === user.googleId} key={user.googleId} user={user} />;
+          return (
+            <Sidebaruser
+              active={toUser.googleId === user.googleId}
+              key={user.googleId}
+              user={user}
+            />
+          );
         })}
+        <Fab id="plus__Bar" onClick = {() => onClickFABHandler()}>
+          <AddIcon />
+        </Fab>
+        <PopupAdduser show={isShowPopup} closeHandler={closePopHandler}/>
       </div>
     </React.Fragment>
   );

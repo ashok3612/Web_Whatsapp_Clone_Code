@@ -11,6 +11,7 @@ import { Sidebar } from "./Sidebar";
 import io from "socket.io-client";
 import { makeAutoScroll } from "..";
 import { serverHostostName } from "../env_Variables/ENV_Constants";
+import PopupAdduser from "./Popup_AddUser";
 
 export const ToUserContext = React.createContext({});
 
@@ -31,26 +32,30 @@ export function MainWhatsApp(props) {
     setDidMount(true);
 
     const socket = io.connect(ENDPOINT);
-    socket.on("ResFromAPI", (data) => {
-      if (sessionStorage.getItem("chatWith")) {
-        const ChatUsers = JSON.parse(sessionStorage.getItem("chatWith"));
-        const from = ChatUsers.from;
-        const to = ChatUsers.to;
-        if (data.from === to && data.to === from) {
-          dispatch(
-            getAllEndToEndChats({
-              from: data.from,
-              to: data.to,
-            })
+    socket.on(
+      "ResFromAPI",
+      (data) => {
+        if (sessionStorage.getItem("chatWith")) {
+          const ChatUsers = JSON.parse(sessionStorage.getItem("chatWith"));
+          const from = ChatUsers.from;
+          const to = ChatUsers.to;
+          if (data.from === to && data.to === from) {
+            dispatch(
+              getAllEndToEndChats({
+                from: data.from,
+                to: data.to,
+              })
+            );
+            makeAutoScroll("#All_Messages_Div", 2000);
+          }
+        } else {
+          alert(
+            "Sorry your browser doesn't support session Storage, Please enable to to enjoy whatsapp services..."
           );
-          makeAutoScroll("#All_Messages_Div", 2000);
         }
-      } else {
-        alert(
-          "Sorry your browser doesn't support session Storage, Please enable to to enjoy whatsapp services..."
-        );
-      }
-    },[]);
+      },
+      []
+    );
 
     if (sessionStorage.getItem("loggedUser")) {
       let currentUserIns = JSON.parse(sessionStorage.getItem("loggedUser"));

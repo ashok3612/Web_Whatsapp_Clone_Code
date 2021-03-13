@@ -14,6 +14,7 @@
   max-width: 50%;
   border-radius: 4px;
   padding: 5px;
+  border: 0.1px solid green;
 }
 
 .Message__MessageLeft {
@@ -24,6 +25,7 @@
   max-width: 50%;
   border-radius: 4px;
   padding: 5px;
+  border: 0.1px solid green;
 }
 
 .Message__Time {
@@ -39,4 +41,5 @@
     font-family: revert;
     padding: 12px;
     word-wrap: break-word !important;
+    font-weight: 500;
 }

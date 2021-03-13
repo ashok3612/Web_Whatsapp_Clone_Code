@@ -13,3 +13,17 @@
 .Sidebar_UsersListPanel::-webkit-scrollbar-thumb {
   background-color: #bfbfbf;
 }
+
+#plus__Bar{
+  position: absolute;
+  background-color: #198F85;
+  left: 25%;
+  bottom: 70px;
+}
+
+@media all and (max-width: 980px) {
+  #plus__Bar{
+      margin-left: 0px;
+      left: 220px;
+  }
+}

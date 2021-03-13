@@ -19,7 +19,7 @@ export function GoogleLogoutComp(props) {
     <div>
       <GoogleLogout
         clientId={cliendId}
-        buttonText="Logout from Whatsapp"
+        buttonText="Logout"
         onLogoutSuccess={onSuccess}
       />
     </div>

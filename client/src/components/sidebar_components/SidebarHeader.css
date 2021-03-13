@@ -15,5 +15,9 @@
 
 .Sidebar__HeaderActionIcons{
     position: relative;
-    width: 40%;
+    width: 30%;
 }
+
+.Logout__Button > div{
+    padding: 2px 2px;
+  }

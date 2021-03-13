@@ -4,6 +4,8 @@ import "./Sidebar.css";
 import { Sidebarheader } from "./sidebar_components/SidebarHeader";
 import { Sidebarsearch } from "./sidebar_components/SidebarSearch";
 import { Sidebaruserspanel } from "./sidebar_components/SidebarUsersPanel";
+import { Fab } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
 
 export function Sidebar(props) {
   const currentUser = useSelector((state) => state.userState.currentUser);
@@ -19,23 +21,28 @@ export function Sidebar(props) {
     if (users && currentUser) {
       const filteredUser = users.filter(
         (user) => user.googleId !== currentUser.googleId
-      )
+      );
       setFinalUsers(filteredUser);
       setSearchedUsers(filteredUser);
     }
   }, [users]);
 
   const searchHandler = (searchValue) => {
-    let searchedUsersList = finalUsers.filter(user => user.name.startsWith(searchValue));
+    let searchedUsersList = finalUsers.filter((user) =>
+      user.name.startsWith(searchValue)
+    );
     setSearchedUsers(searchedUsersList);
-  }
+  };
 
   return (
     <React.Fragment>
       <div className="Sidebar__Main">
         <Sidebarheader img={currentUser.imageUrl} />
         <Sidebarsearch searchHandler={searchHandler} />
-        <Sidebaruserspanel users={searchedUsers} googleId={currentUser.googleId} />
+        <Sidebaruserspanel
+          users={searchedUsers}
+          googleId={currentUser.googleId}
+        />
       </div>
     </React.Fragment>
   );

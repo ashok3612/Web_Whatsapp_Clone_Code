@@ -218,3 +218,18 @@ export const setStateBySessionData = (response) => {
     }
   };
 };
+
+export const getSingleUser = async (Obj) => {
+  let singleUser = {};
+  const URL = `${apiURL}/api/v1/user/getSingleUser`;
+  const data = { ...Obj };
+  const config = {
+    "Content-Type": "application/json",
+  };
+
+  singleUser = await axios
+    .post(URL, data, config)
+    .then((res) => res.data)
+    .catch((error) => {});
+  return singleUser;
+};

@@ -63,8 +63,29 @@ const getUserById = (req, res) => {
   });
 };
 
+const getSingleUser = (req, res) =>{
+  let document = {};
+  Users.find().where("email").equals(req.body.email).exec((err, user) => {
+    if (err) {
+      document = document = {
+        error: `Error occured while get single User : ${err}`,
+      };
+    } else {
+      document = user[0];
+      if (document === undefined) {
+        document = {
+          error:
+            "OOPS, User who you are trying to reach was not found in our database...",
+        };
+      }
+    }
+    res.json(document);
+  });
+}
+
 module.exports = {
   getAllUsers,
   insertUser,
   getUserById,
+  getSingleUser
 };
