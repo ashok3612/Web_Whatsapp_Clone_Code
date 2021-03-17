@@ -8,7 +8,7 @@ const path = require("path");
 require("./Models/db");
 const userUtil = require("./Utils/user.Utils");
 const chatUtil = require("./Utils/chat.Utils");
-const supportUtil = require("./Utils/Support.Utils");
+const supportUtil = require("./Utils/support.Utils");
 
 // Constants
 const PORT = process.env.PORT || 8000;
