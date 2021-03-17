@@ -8,6 +8,7 @@ const path = require("path");
 require("./Models/db");
 const userUtil = require("./Utils/user.Utils");
 const chatUtil = require("./Utils/chat.Utils");
+const supportUtil = require("./Utils/Support.Utils");
 
 // Constants
 const PORT = process.env.PORT || 8000;
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/v1/user", userUtil);
 app.use("/api/v1/chat", chatUtil);
+app.use("/api/v1/support", supportUtil);
 
 if (
   process.env.NODE_ENV === "production" ||

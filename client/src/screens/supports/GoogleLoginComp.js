@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
+import { spinnerContext } from "../../App";
 import { googleClientID } from "../../env_Variables/ENV_Constants";
 import { loginUserToApp } from "../../redux/action-listners/user.ActionListener";
 import { Refreshtoken } from "./refreshToken";
@@ -10,6 +11,8 @@ let isLogin = false;
 
 export function GoogleLoginComp(props) {
   const dispatch = useDispatch();
+  const context = useContext(spinnerContext);
+  context(false);
 
   const onSuccess = (res) => {
     const succObj = {
@@ -17,6 +20,7 @@ export function GoogleLoginComp(props) {
       res: res.profileObj,
     };
     if (isLogin) {
+      context(true);
       dispatch(loginUserToApp(succObj));
       Refreshtoken(res);
       isLogin = false;

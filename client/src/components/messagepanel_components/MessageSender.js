@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./MessageSender.css";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import AttachmentIcon from "@material-ui/icons/Attachment";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Tooltip } from "@material-ui/core";
 import MicNoneIcon from "@material-ui/icons/MicNone";
 import { useDispatch, useSelector } from "react-redux";
 import { sendMessageToDb } from "../../redux/action-listners/chat.ActionListeners";
@@ -13,7 +13,7 @@ export function Messagesender(props) {
   let [message, setMessage] = useState("");
   const dispatcher = useDispatch();
   const inputMsgComp = useRef(null);
-  
+
   useEffect(() => {
     inputMsgComp.current.focus();
   }, [toUser]);
@@ -21,10 +21,10 @@ export function Messagesender(props) {
   const submitConvHandler = (e) => {
     e.preventDefault();
     const chatObj = {
-        from : currentUser.googleId,
-        to : toUser.googleId,
-        message : message.trim(),
-        created_at : createdTimeHandler()
+      from: currentUser.googleId,
+      to: toUser.googleId,
+      message: message.trim(),
+      created_at: createdTimeHandler(),
     };
     dispatcher(sendMessageToDb(chatObj));
     setMessage("");
@@ -38,12 +38,16 @@ export function Messagesender(props) {
   return (
     <div className="Message__SenderMain">
       <div className="Message_SenderIcons">
-        <IconButton>
-          <InsertEmoticonIcon />
-        </IconButton>
-        <IconButton>
-          <AttachmentIcon />
-        </IconButton>
+        <Tooltip title="Sorry, Currently this item not in use">
+          <IconButton>
+            <InsertEmoticonIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Sorry, Currently this item not in use">
+          <IconButton>
+            <AttachmentIcon />
+          </IconButton>
+        </Tooltip>
       </div>
       <div className="Message_SenderItem">
         <form onSubmit={(e) => submitConvHandler(e)}>
@@ -57,9 +61,11 @@ export function Messagesender(props) {
         </form>
       </div>
       <div className="Message_SenderMic">
-        <IconButton>
-          <MicNoneIcon />
-        </IconButton>
+        <Tooltip title="Sorry, Currently this item not in use">
+          <IconButton>
+            <MicNoneIcon />
+          </IconButton>
+        </Tooltip>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { initiateUserSupportForUser } = require("./support.Controller");
 const Users = mongoose.model("User");
 
 const getAllUsers = (req, res) => {
@@ -38,6 +39,7 @@ const insertUser = (req, res) => {
       };
     } else {
       document = user;
+      initiateUserSupportForUser(document.googleId);
     }
     return res.json(document);
   });
@@ -47,7 +49,7 @@ const getUserById = (req, res) => {
   let document = {};
   Users.find().where("googleId").equals(req.body._id).exec((err, user) => {
     if (err) {
-      document = document = {
+      document = {
         error: `Error occured while get single User : ${err}`,
       };
     } else {

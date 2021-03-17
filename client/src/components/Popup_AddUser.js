@@ -9,15 +9,27 @@ import "./Popup_AddUser.css";
 import { Sidebaruser } from "./sidebar_components/SidebarUser";
 import { useState } from "react";
 import { getSingleUser } from "../redux/action-listners/user.ActionListener";
+import { useDispatch, useSelector } from "react-redux";
+import { addFriendToList } from "../redux/action-listners/support.ActionListener";
 
 export default function PopupAdduser(props) {
   const setCloseHandler = props.closeHandler;
   let [email, setEmail] = useState("");
   let [validEmail, setValidEmail] = useState(false);
   let [searchedUser, setsearchedUser] = useState({});
+  const currentUser = useSelector((state) => {
+    return state.userState.currentUser;
+  });
+  const dispatch = useDispatch();
 
   const handleClose = () => {
     setCloseHandler(false);
+  };
+
+  const handleUserSelect = () => {
+    handleClose();
+    if (currentUser.googleId !== searchedUser.googleId)
+      dispatch(addFriendToList(currentUser.googleId, searchedUser));
   };
 
   const setUserEmailHandler = async (localEmail) => {
@@ -27,12 +39,12 @@ export default function PopupAdduser(props) {
         email
       )
     ) {
-        setValidEmail(true);
+      setValidEmail(true);
       const user = await getSingleUser({
         email: localEmail,
       });
-      if(user.Error !== undefined){
-          return
+      if (user.Error !== undefined) {
+        return;
       }
       setsearchedUser(user);
     } else {
@@ -41,15 +53,15 @@ export default function PopupAdduser(props) {
     }
   };
 
-//   const debounce = (func, delay) => {
-//     let debounceTimer;
-//     return function () {
-//       const context = this;
-//       const args = arguments;
-//       clearTimeout(debounceTimer);
-//       debounceTimer = setTimeout(() => func.apply(context, args), delay);
-//     };
-//   };
+  //   const debounce = (func, delay) => {
+  //     let debounceTimer;
+  //     return function () {
+  //       const context = this;
+  //       const args = arguments;
+  //       clearTimeout(debounceTimer);
+  //       debounceTimer = setTimeout(() => func.apply(context, args), delay);
+  //     };
+  //   };
 
   return (
     <div>
@@ -61,7 +73,7 @@ export default function PopupAdduser(props) {
         <DialogTitle id="form-dialog-title">New Chat</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Enter full email id of your friend to begin chat with him/her.
+            Enter full email id of your friend to begin chat with.
           </DialogContentText>
           <TextField
             value={email}
@@ -69,25 +81,22 @@ export default function PopupAdduser(props) {
             autoFocus
             margin="dense"
             id="name"
-            label="Email Address"
+            label="Full Email Address"
             type="email"
             fullWidth
             onChange={(e) => setUserEmailHandler(e.target.value)}
           />
           <hr />
-          {console.log(validEmail)}
           {validEmail ? (
-            searchedUser.googleId !== undefined ? 
-              <div onClick={handleClose}>
+            searchedUser.googleId !== undefined ? (
+              <div onClick={handleUserSelect}>
                 <Sidebaruser active={false} user={searchedUser} />
               </div>
-            : (
+            ) : (
               <font style={{ color: "red" }}>Sorry, User not found...☹</font>
             )
           ) : (
-            <font style={{ color: "red" }}>
-              Please enter enter valid email...🙇
-            </font>
+            <font style={{ color: "red" }}>Please enter valid email...🙇</font>
           )}
         </DialogContent>
         <DialogActions>

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { useDispatch } from "react-redux";
+import { spinnerContext } from "../../App";
 import { googleClientID } from "../../env_Variables/ENV_Constants";
 import { registerUserToApp } from "../../redux/action-listners/user.ActionListener";
 
@@ -10,6 +11,8 @@ let isLogin = false;
 export function Googleregistercomp(props) {
   const dispatch = useDispatch();
   let isRegister = false;
+  const context = useContext(spinnerContext);
+  context(false);
 
   const onSuccess = (res) => {
     if (isRegister) {

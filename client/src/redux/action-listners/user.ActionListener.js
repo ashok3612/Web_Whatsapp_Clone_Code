@@ -35,7 +35,6 @@ export const registerUserToApp = (response) => {
         _id: response.res.googleId,
       };
       axios.post(LoginUserURL, data, config).then((res) => {
-        console.log(res.data);
         if (!res.data.error) {
           toast.error(
             `Registration prohibted 😰, Reason: User Already Registered`,
@@ -58,7 +57,6 @@ export const registerUserToApp = (response) => {
             ...response.res,
           };
           axios.post(registerURL, data, config).then((res) => {
-            console.log(res.data);
             if (res.data.googleId) {
               dispatch(userRegisterSuccess(res.data));
             } else {
@@ -75,7 +73,6 @@ export const registerUserToApp = (response) => {
 };
 
 export const loginUserToApp = (response) => {
-  console.log(response)
   if (response.type === "Error") {
     toast.error(
       `Login Failed 😰, Reason: ${response.res.error ? response.res.error.toUpperCase(): ""}`,

@@ -41,7 +41,6 @@ export function Messagebody(props) {
   };
   return (
     <div id="All_Messages_Div" className="Message__Body" ref={msgDiv}>
-      {console.log(isSpin)}
       {isSpin ? setTimeOutVal(2000) : ""}
       {isSpin ? (
         <Loader type="TailSpin" color="green" height={50} width={50} />

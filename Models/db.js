@@ -14,3 +14,4 @@ mongoose.connect(
 
 require("./chat.Model");
 require("./user.Model");
+require("./support.Model")

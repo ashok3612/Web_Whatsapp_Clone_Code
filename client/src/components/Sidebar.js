@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllFriendsList } from "../redux/action-listners/support.ActionListener";
 import "./Sidebar.css";
 import { Sidebarheader } from "./sidebar_components/SidebarHeader";
 import { Sidebarsearch } from "./sidebar_components/SidebarSearch";
 import { Sidebaruserspanel } from "./sidebar_components/SidebarUsersPanel";
-import { Fab } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
 
 export function Sidebar(props) {
   const currentUser = useSelector((state) => state.userState.currentUser);
+  // const users = useSelector((state) => {
+  //   let usersArr = [];
+  //   if (state.userState !== undefined) usersArr = state.userState.Users;
+  //   return usersArr;
+  // });
   const users = useSelector((state) => {
     let usersArr = [];
-    if (state.userState !== undefined) usersArr = state.userState.Users;
+    if (state.supportState !== undefined) usersArr = state.supportState.Friends;
     return usersArr;
   });
   let [finalUsers, setFinalUsers] = useState([]);
   let [searchedUsers, setSearchedUsers] = useState([]);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (users && currentUser) {
@@ -25,7 +30,13 @@ export function Sidebar(props) {
       setFinalUsers(filteredUser);
       setSearchedUsers(filteredUser);
     }
-  }, [users]);
+  }, [users, currentUser]);
+
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(getAllFriendsList(currentUser.googleId));
+    }
+  }, [currentUser]);
 
   const searchHandler = (searchValue) => {
     let searchedUsersList = finalUsers.filter((user) =>
@@ -37,7 +48,7 @@ export function Sidebar(props) {
   return (
     <React.Fragment>
       <div className="Sidebar__Main">
-        <Sidebarheader img={currentUser.imageUrl} />
+        <Sidebarheader img={currentUser.imageUrl} name={currentUser.name}/>
         <Sidebarsearch searchHandler={searchHandler} />
         <Sidebaruserspanel
           users={searchedUsers}

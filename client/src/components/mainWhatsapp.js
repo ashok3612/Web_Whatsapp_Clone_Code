@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAllEndToEndChats } from "../redux/action-listners/chat.ActionListeners";
@@ -11,7 +11,7 @@ import { Sidebar } from "./Sidebar";
 import io from "socket.io-client";
 import { makeAutoScroll } from "..";
 import { serverHostostName } from "../env_Variables/ENV_Constants";
-import PopupAdduser from "./Popup_AddUser";
+import { spinnerContext } from "../App";
 
 export const ToUserContext = React.createContext({});
 
@@ -27,6 +27,8 @@ export function MainWhatsApp(props) {
   let toUserId = toChatUser.googleId;
   const [didMount, setDidMount] = useState(false);
   const ENDPOINT = serverHostostName;
+  const context = useContext(spinnerContext);
+  context(false);
 
   useEffect((fromUserId, toUserId) => {
     setDidMount(true);
@@ -95,7 +97,8 @@ export function MainWhatsApp(props) {
       <div className="wApp_main">
         <ToUserContext.Provider value={toUserHandler}>
           <Sidebar></Sidebar>
-          {toChatUser.googleId === undefined ? (
+          {toChatUser.googleId === undefined ||
+          toChatUser.googleId === currentUser.googleId ? (
             <Dummymessagepanel />
           ) : (
             <Messagepanel />

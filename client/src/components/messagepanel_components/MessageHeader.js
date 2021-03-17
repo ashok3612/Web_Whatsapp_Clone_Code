@@ -1,6 +1,6 @@
 import React from "react";
 import "./MessageHeader.css";
-import { Avatar, IconButton } from "@material-ui/core";
+import { Avatar, IconButton, Tooltip } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
@@ -10,7 +10,10 @@ export function Messageheader(props) {
   const toChatUser = useSelector((state) => state.userState.toChatUser);
 
   const img = toChatUser.imageUrl;
-  const name =  toChatUser.name.length > 15 ? `${toChatUser.name.slice(0, 15)} ...` : toChatUser.name;
+  const name =
+    toChatUser.name.length > 15
+      ? `${toChatUser.name.slice(0, 15)} ...`
+      : toChatUser.name;
 
   const useStyles = makeStyles((theme) => ({
     large: {
@@ -34,14 +37,17 @@ export function Messageheader(props) {
       </div>
       <div className="Message__HeaderRight">
         <div className="Message_HeaderRightIcons">
-          <IconButton>
-            <SearchIcon />
-          </IconButton>
-          <IconButton>
-            <MoreHorizIcon />
-          </IconButton>
+          <Tooltip title="Sorry, Currently this item not in use">
+            <IconButton>
+              <SearchIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Sorry, Currently this item not in use">
+            <IconButton>
+              <MoreHorizIcon />
+            </IconButton>
+          </Tooltip>
         </div>
-        
       </div>
     </div>
   );
