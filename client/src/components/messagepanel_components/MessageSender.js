@@ -114,7 +114,7 @@ export function Messagesender(props) {
             {message.length === 0 ? (
               <MicNoneIcon />
             ) : (
-              <SendIcon style={{ color: "green" }} />
+              <SendIcon style={{ color: "green" }} onClick={(e) => submitConvHandler(e) }/>
             )}
           </IconButton>
         </Tooltip>
