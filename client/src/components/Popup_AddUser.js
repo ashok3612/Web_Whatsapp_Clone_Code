@@ -30,6 +30,8 @@ export default function PopupAdduser(props) {
     handleClose();
     if (currentUser.googleId !== searchedUser.googleId)
       dispatch(addFriendToList(currentUser.googleId, searchedUser));
+      setEmail("");
+      setsearchedUser({})
   };
 
   const setUserEmailHandler = async (localEmail) => {

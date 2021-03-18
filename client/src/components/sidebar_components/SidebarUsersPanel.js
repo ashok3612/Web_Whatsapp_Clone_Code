@@ -14,7 +14,10 @@ export function Sidebaruserspanel(props) {
   let [isShowPopup, setIsShowPopup] = useState(false);
 
   useEffect(() => {
-    setAllUsers(users);
+    setAllUsers(Oldusers => 
+      {
+        return [...users]
+      });
   }, [toUser, users]);
 
   const onClickFABHandler = () => {
@@ -28,7 +31,8 @@ export function Sidebaruserspanel(props) {
   return (
     <React.Fragment>
       <div className="Sidebar_UsersListPanel">
-        {allUsers.map((user) => {
+        {allUsers.length !== 0 &&  toUser !== undefined ? allUsers.map((user) => {
+          console.log(toUser, "===", user.googleId)
           return (
             <Sidebaruser
               active={toUser.googleId === user.googleId}
@@ -36,7 +40,7 @@ export function Sidebaruserspanel(props) {
               user={user}
             />
           );
-        })}
+        }) : <span style={{top : "10px", position:"relative"}}> No friends found... Click Add button to begin chat with your first friend...😀</span>}
         <Tooltip title="Add new user to your friends list...">
           <Fab id="plus__Bar" onClick={() => onClickFABHandler()}>
             <AddIcon />

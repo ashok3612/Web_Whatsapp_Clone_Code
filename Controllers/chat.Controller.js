@@ -3,8 +3,8 @@ const Chats = mongoose.model("Chat");
 
 let io;
 const getIo = (myio) => {
-  io=myio;
-}
+  io = myio;
+};
 
 const getEndToEndChat = (req, res) => {
   let document = {};
@@ -63,10 +63,10 @@ const saveChatToDB = (req, res) => {
       };
     } else {
       document = chat;
-     io.emit('ResFromAPI', {
-      from : req.body.from,
-      to : req.body.to
-     });
+      io.emit("ResFromAPI", {
+        from: req.body.from,
+        to: req.body.to,
+      });
     }
     return res.json(document);
   });
@@ -76,5 +76,5 @@ module.exports = {
   getIo,
   getEndToEndChat,
   saveChatToDB,
-  getLastChat
+  getLastChat,
 };
