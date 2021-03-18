@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { sendMessageToDb } from "../../redux/action-listners/chat.ActionListeners";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
+import SendIcon from "@material-ui/icons/Send";
 
 export function Messagesender(props) {
   const currentUser = useSelector((state) => state.userState.currentUser);
@@ -67,7 +68,7 @@ export function Messagesender(props) {
   };
 
   const focusEventHandler = () => {
-    setshowEmojiProps({ show: false});
+    setshowEmojiProps({ show: false });
   };
 
   return (
@@ -110,7 +111,11 @@ export function Messagesender(props) {
       <div className="Message_SenderMic">
         <Tooltip title="Sorry, Currently this item not in use">
           <IconButton>
-            <MicNoneIcon />
+            {message.length === 0 ? (
+              <MicNoneIcon />
+            ) : (
+              <SendIcon style={{ color: "green" }} />
+            )}
           </IconButton>
         </Tooltip>
       </div>
