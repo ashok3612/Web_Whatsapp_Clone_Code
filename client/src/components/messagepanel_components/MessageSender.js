@@ -109,15 +109,13 @@ export function Messagesender(props) {
         </form>
       </div>
       <div className="Message_SenderMic">
-        <Tooltip title="Sorry, Currently this item not in use">
           <IconButton>
             {message.length === 0 ? (
-              <MicNoneIcon />
+              <Tooltip title="Sorry, Currently this item not in use"><MicNoneIcon /></Tooltip>
             ) : (
               <SendIcon style={{ color: "green" }} onClick={(e) => submitConvHandler(e) }/>
             )}
           </IconButton>
-        </Tooltip>
       </div>
     </div>
   );

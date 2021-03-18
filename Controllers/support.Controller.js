@@ -50,7 +50,9 @@ const addFriendToList = (req, res) => {
         document = user[0];
         if (user.length === 0) {
           res.status(500).send("OOPS, No User found...");
-        } else {
+        } 
+        else {
+          if(req.body.newFriend !== undefined){
           let flag = true;
           document.Friends.forEach((ele) => {
             if (ele.googleId === req.body.newFriend.googleId) {
@@ -61,6 +63,10 @@ const addFriendToList = (req, res) => {
             document.Friends.push(req.body.newFriend);
             document.save();
             res.json(document.Friends);
+          }
+          else{
+            res.status(500).send("Request body with empty friend");
+          }
           } else {
             res.status(500).send("OOPS, User already had this friend...");
           }
