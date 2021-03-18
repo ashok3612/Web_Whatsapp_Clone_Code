@@ -22,7 +22,11 @@ const getAllFriends = (req, res) => {
         document = {
           error: `Error occured while get User friends : ${err}`,
         };
-      } else {
+      } else if(friends === undefined || friends.length === 0){
+        document = {
+          error: `No Friends Found : ${err}`,
+        };
+      }else {
         document = friends[0].Friends;
         if (friends.length === 0) {
           document = {
