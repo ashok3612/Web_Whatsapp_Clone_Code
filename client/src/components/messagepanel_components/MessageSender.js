@@ -16,10 +16,23 @@ export function Messagesender(props) {
   const dispatcher = useDispatch();
   const inputMsgComp = useRef(null);
   let [ShowEmojiProps, setshowEmojiProps] = useState({});
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
     inputMsgComp.current.focus();
   }, [toUser]);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        focusEventHandler();
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [wrapperRef]);
 
   // useEffect(() => {
   //   if (ShowEmojiProps !== undefined && ShowEmojiProps.show) {
@@ -51,11 +64,10 @@ export function Messagesender(props) {
   const addEmoji = (e) => {
     let emoji = e.native;
     setMessage(message + emoji);
-    focusEventHandler();
   };
 
   const focusEventHandler = () => {
-    setshowEmojiProps({ show: false, x: 0, y: 0 });
+    setshowEmojiProps({ show: false});
   };
 
   return (
@@ -68,6 +80,7 @@ export function Messagesender(props) {
         </IconButton>
         {ShowEmojiProps.show ? (
           <span
+            ref={wrapperRef}
             id="rmenu"
             style={{ position: "absolute", top: "-430px", left: "15px" }}
           >
