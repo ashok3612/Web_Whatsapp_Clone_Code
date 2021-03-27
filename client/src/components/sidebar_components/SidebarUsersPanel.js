@@ -32,7 +32,6 @@ export function Sidebaruserspanel(props) {
     <React.Fragment>
       <div className="Sidebar_UsersListPanel">
         {allUsers.length !== 0 &&  toUser !== undefined ? allUsers.map((user) => {
-          console.log(toUser, "===", user.googleId)
           return (
             <Sidebaruser
               active={toUser.googleId === user.googleId}

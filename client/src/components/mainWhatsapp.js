@@ -86,7 +86,6 @@ export function MainWhatsApp(props) {
     setToUserUpdator(val);
     if(val !== "" && users.length !== 0){
     let toUser = users.filter((user) => user.googleId === val);
-    console.log(toUser);
     dispatch(changeToUser(toUser[0]));
     if (currentUser.googleId !== undefined && val !== undefined) {
       fromUserId = currentUser.googleId;
