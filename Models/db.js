@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
-// const mondoCluster =
-  // "mongodb+srv://ashok_admin:RAgQU5iWTkoiKpOP@cluster0.sqxrh.mongodb.net/webWhats?retryWrites=true&w=majority";
+const mondoCluster =
+  "mongodb+srv://ashok_admin:RAgQU5iWTkoiKpOP@cluster0.sqxrh.mongodb.net/webWhats?retryWrites=true&w=majority";
 
-  const mondoCluster =
-  "mongodb+srv://ashok_admin:RAgQU5iWTkoiKpOP@cluster0.sqxrh.mongodb.net/webWhatsLocal?retryWrites=true&w=majority";
+  // const mondoCluster =
+  // "mongodb+srv://ashok_admin:RAgQU5iWTkoiKpOP@cluster0.sqxrh.mongodb.net/webWhatsLocal?retryWrites=true&w=majority";
 
 mongoose.connect(
   mondoCluster,
